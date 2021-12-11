@@ -7,6 +7,7 @@
       :city="event.city"
       :date="event.date"
       :numParticipants="event.numParticipants"
+      :orgName="event.orgName"
     ></event-short>
   </section>
 </template>

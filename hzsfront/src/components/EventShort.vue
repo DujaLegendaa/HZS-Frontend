@@ -1,9 +1,20 @@
 <template>
-  <p @click="clicked()">
-    <span id="date"> {{ date }} </span>
-    <span id="city">{{ city }}</span>
-    <span id="numParticipants">{{ numParticipants }}</span>
-  </p>
+  <q-card class="my-card">
+    <q-item>
+      <q-item-section avatar>
+        <q-avatar>
+          <img src="https://cdn.quasar.dev/img/avatar2.jpg" />
+        </q-avatar>
+      </q-item-section>
+
+      <q-item-section>
+        <q-item-label>{{ orgName }}</q-item-label>
+        <q-item-label caption>{{ city }}</q-item-label>
+      </q-item-section>
+    </q-item>
+
+    <img src="https://cdn.quasar.dev/img/parallax2.jpg" />
+  </q-card>
 </template>
 
 <script>
@@ -23,6 +34,10 @@ export default {
     },
     numParticipants: {
       type: Number,
+      required: true,
+    },
+    orgName: {
+      type: String,
       required: true,
     },
   },

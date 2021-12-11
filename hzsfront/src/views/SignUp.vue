@@ -30,12 +30,21 @@
         <q-checkbox
           dense
           v-model="organizator"
-          
           val="Organizator"
           label="Organizator"
         />
       </div>
-
+      <div v-if="organizator" class="input">
+        <q-input
+          type="password"
+          name="passwordConfirm"
+          class="input"
+          id="passwordConfirm"
+          v-model="passwordConfirm"
+          placeholder="Unesite ime organizacije: "
+          required
+        />
+      </div>
       <div class="select">
         <q-select
           outlined
@@ -87,12 +96,17 @@
       </p>
       <div class="btn-grad">
         <q-btn
-            type="Submit"
-            style="border: none; width: 275px; font-weight: 700; letter-spacing: 0.2ch;"
-            :disabled="isActive"
-            :class="[{ activeClass: !isActive }]"
+          type="Submit"
+          style="
+            border: none;
+            width: 275px;
+            font-weight: 700;
+            letter-spacing: 0.2ch;
+          "
+          :disabled="isActive"
+          :class="[{ activeClass: !isActive }]"
         >
-            Submit
+          Submit
         </q-btn>
       </div>
     </q-form>
@@ -172,6 +186,24 @@ export default {
     },
   },
   methods: {
+    async submit() {
+      //dodati u bazu username, email, password, passwordConfirm
+      try {
+        await this.$store.dispatch("signup", {
+          name: this.name,
+          surname: this.surname,
+          email: this.email,
+          city: this.city,
+          role: this.organizator ? "organizator" : "user",
+          password: this.password,
+          passwordConfirm: this.passwordConfirm,
+        });
+      } catch (err) {
+        this.errored = true;
+        this.errorMessage = err.data.message;
+      }
+      window.location.reload();
+    },
     logInError() {
       return (
         this.email.length === 0 ||
@@ -230,7 +262,7 @@ export default {
   height: 30px;
   width: 400px;
 }
-p{
+p {
   color: rgb(204, 50, 50);
   font-size: 1.5ch;
   font-weight: 750;
@@ -241,29 +273,34 @@ label {
   font-weight: 700;
   align-self: baseline;
 }
-    .btn-grad {background-image: linear-gradient(to right, #63c968 0%,  #6bd1c7  51%, #63c968  100%)}
-         .btn-grad {
-            margin: 10px;
-            align-self: center;
-            width: 275px;
-            text-align: center;
-            text-transform: uppercase;
-            transition: 0.5s;
-            background-size: 200% auto;
-            color: white;            
-            box-shadow: 0 0 20px #eee;
-            border-radius: 5px;
-            
-          }
+.btn-grad {
+  background-image: linear-gradient(
+    to right,
+    #63c968 0%,
+    #6bd1c7 51%,
+    #63c968 100%
+  );
+}
+.btn-grad {
+  margin: 10px;
+  align-self: center;
+  width: 275px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 5px;
+}
 
-          .btn-grad:hover {
-            background-position: right center; 
-            color: #fff;
-            text-decoration: none;
-          }
-          
-         
-h1{
+.btn-grad:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+h1 {
   margin: 1ch 0 0.1ch;
   align-self: center;
   font-size: 8ch;
@@ -271,7 +308,7 @@ h1{
   color: #63d062;
 }
 
-.check-box{
-    margin: 1ch 0 2ch;
+.check-box {
+  margin: 1ch 0 2ch;
 }
 </style>

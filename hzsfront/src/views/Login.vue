@@ -34,6 +34,7 @@
         Sva polja trebaju biti ispravno popunjena.
       </p>
       <q-btn type="Submit" :class="[{ activeClass: !isActive }]"
+      class="btn-grad"
       style="
         border: none; width: 275px; font-weight: 700; letter-spacing: 0.2ch;
       "
