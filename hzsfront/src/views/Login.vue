@@ -8,23 +8,23 @@
       <label for="email">Email: </label>
       <q-input
         type="text"
-        placeholder="Enter your email"
+        placeholder="Unesite email"
         name="email"
         id="email"
         v-model="email"
         required
       />
-      <label for="password">Password: </label>
+      <label for="password">Sifra: </label>
       <q-input
         type="password"
         name="password"
-        placeholder="Enter you password"
+        placeholder="Unesite sifru"
         id="password"
         v-model="password"
         required
       />
       <p v-if="isActive" style="color: red">
-        All fields must be filled in correctly.
+        Sva polja trebaju biti ispravno popunjena.
       </p>
       <q-button
         type="Submit"
