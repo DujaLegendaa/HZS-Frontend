@@ -1,6 +1,6 @@
 <template>
   <section>
-    <q-select v-model="model" :options="options" label="Grad" />
+    <q-select v-model="city" :options="selectOptions" label="Grad" />
 
     <div class="q-pa-md" style="max-width: 300px">
       <q-input filled v-model="eventDay" mask="date" :rules="['date']">
@@ -50,6 +50,20 @@ export default {
       city: "",
       eventDay: "",
       description: "",
+      selectOptions: [
+        {
+          label: "Kraljevo",
+          value: "Kraljevo",
+        },
+        {
+          label: "Beograd",
+          value: "Beograd",
+        },
+        {
+          label: "Krusevac",
+          value: "Krusevac",
+        },
+      ],
     };
   },
   computed: {

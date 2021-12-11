@@ -33,7 +33,11 @@
       <p v-if="isActive">
         Sva polja trebaju biti ispravno popunjena.
       </p>
-      <q-btn type="Submit" :class="[{ activeClass: !isActive }]">
+      <q-btn type="Submit" :class="[{ activeClass: !isActive }]"
+      style="
+        border: none; width: 275px; font-weight: 800;
+      "
+      >
         Submit
       </q-btn>
     </q-form>
@@ -107,8 +111,31 @@ h1{
   color: #63d062;
 }
 
+.btn-grad {background-image: linear-gradient(to right, #63c968 0%,  #6bd1c7  51%, #63c968  100%)}
+         .btn-grad {
+            margin: 10px;
+            align-self: center;
+            width: 275px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 5px;
+            
+          }
+
+          .btn-grad:hover {
+            background-position: right center; 
+            color: #fff;
+            text-decoration: none;
+          }
 p{
   color: rgb(204, 50, 50);
+  font-size: 1.5ch;
+  font-weight: 750;
 }
 label {
   font-size: 2ch;

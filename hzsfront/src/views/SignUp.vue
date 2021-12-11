@@ -26,11 +26,11 @@
           required
         />
       </div>
-      <div class="radio">
-        <q-radio
+      <div class="check-box">
+        <q-checkbox
           dense
           v-model="organizator"
-          class="radio"
+          
           val="Organizator"
           label="Organizator"
         />
@@ -70,7 +70,7 @@
           required
         />
       </div>
-      <label for="passwordConfirm">Potvdi sifru: </label>
+      <label for="passwordConfirm">Potvrdi sifru: </label>
       <div class="input">
         <q-input
           type="password"
@@ -85,13 +85,16 @@
       <p v-if="isActive" style="color: red">
         Sva polja trebaju biti ispravno popunjena.
       </p>
-      <q-button
-        type="Submit"
-        :disabled="isActive"
-        :class="[{ activeClass: !isActive }]"
-      >
-        Submit
-      </q-button>
+      <div class="btn-grad">
+        <q-btn
+            type="Submit"
+            style="border: none; width: 275px;"
+            :disabled="isActive"
+            :class="[{ activeClass: !isActive }]"
+        >
+            Submit
+        </q-btn>
+      </div>
     </q-form>
   </section>
 </template>
@@ -101,6 +104,7 @@ export default {
   data() {
     return {
       name: "",
+      organizator: false,
       surname: "",
       email: "",
       password: "",
@@ -193,13 +197,60 @@ export default {
   padding: 0;
   height: 30px;
   width: 400px;
+}
+p{
+  color: rgb(204, 50, 50);
+  font-size: 1.5ch;
+  font-weight: 750;
+}
+label {
+  font-size: 2ch;
+  color: rgb(46, 46, 46);
+  font-weight: 700;
+  align-self: baseline;
+}
+/*
+::before{
+    align-self: center;
+    background: linear-gradient(90deg, #63c968, #6bd1c7);
+    width: 275px;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 0.2ch
+}
+*/
 
-  /*
-        border: 1px solid gray;
-        border-top-style: none;
-        border-right-style: none;
-        border-left-style: none;
-        border-bottom-style: solid;
-        */
+    .btn-grad {background-image: linear-gradient(to right, #63c968 0%,  #6bd1c7  51%, #63c968  100%)}
+         .btn-grad {
+            margin: 10px;
+            align-self: center;
+            width: 275px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 5px;
+            
+          }
+
+          .btn-grad:hover {
+            background-position: right center; 
+            color: #fff;
+            text-decoration: none;
+          }
+          
+         
+h1{
+  margin: 1ch 0 0.1ch;
+  align-self: center;
+  font-size: 8ch;
+  font-weight: 700;
+  color: #63d062;
+}
+
+.check-box{
+    margin: 1ch 0 2ch;
 }
 </style>
