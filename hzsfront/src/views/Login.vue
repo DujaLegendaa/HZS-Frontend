@@ -1,5 +1,5 @@
 <template>
-  <section id="Login">
+  <section id="login">
     <h1>Log in</h1>
     <error-alert v-if="errored" :title="errorMessage">
       <button @click="errored = false">Confirm</button>
@@ -94,17 +94,18 @@ export default {
   width: 400px;
 }
 
-h1 {
-  margin: 1ch 0 0.1ch;
-  font-size: 8ch;
-  font-weight: 700;
-  color: #63d062;
-}
+  h1{
+    margin: 1ch 0 0.1ch;
+    align-self: center;
+    font-size: 8ch;
+    font-weight: 700;
+    color: #63d062;
+  }
 
-label {
-  font-size: 2ch;
-  color: rgb(46, 46, 46);
-  font-weight: 700;
-  align-self: baseline;
-}
+  label {
+    font-size: 2ch;
+    color: rgb(46, 46, 46);
+    font-weight: 700;
+    align-self: baseline;
+  }
 </style>
