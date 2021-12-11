@@ -35,12 +35,7 @@
       </p>
       <q-btn type="Submit" :class="[{ activeClass: !isActive }]"
       style="
-        align-self: center;
-        background: linear-gradient(90deg, #63c968, #6bd1c7);
-        width: 275px;
-        color: white;
-        font-weight: 700;
-        letter-spacing: 0.2ch
+        border: none; width: 275px;
       "
       >
         Submit
@@ -116,6 +111,26 @@ h1{
   color: #63d062;
 }
 
+.btn-grad {background-image: linear-gradient(to right, #63c968 0%,  #6bd1c7  51%, #63c968  100%)}
+         .btn-grad {
+            margin: 10px;
+            align-self: center;
+            width: 275px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 5px;
+            
+          }
+
+          .btn-grad:hover {
+            background-position: right center; 
+            color: #fff;
+            text-decoration: none;
+          }
 p{
   color: rgb(204, 50, 50);
   font-size: 1.5ch;
