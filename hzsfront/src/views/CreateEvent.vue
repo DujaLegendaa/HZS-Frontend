@@ -59,7 +59,39 @@ export default {
           {
               label:'Krusevac',
               value:'Krusevac'
-          }
+          },
+          {
+          label: "Jagodina",
+          value: "Jagodina",
+        },
+        {
+          label: "Pozarevac",
+          value: "Pozarevac",
+        },
+        {
+          label: "Novi Sad",
+          value: "Novi Sad",
+        },
+        {
+          label: "Smederevo",
+          value: "Smederevo",
+        },
+        {
+          label: "Sombor",
+          value: "Sombor",
+        },
+        {
+          label: "Uzice",
+          value: "Uzice",
+        },
+        {
+          label: "Obrenovac",
+          value: "Obrenovac",
+        },
+        {
+          label: "Pancevo",
+          value: "Pancevo",
+        },
       ]
     }
   },

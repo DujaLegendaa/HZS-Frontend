@@ -40,7 +40,7 @@
         <q-select
           outlined
           class="select"
-          v-model="model"
+          v-model="city"
           :options="selectOptions"
           label="Grad"
         />
@@ -122,6 +122,38 @@ export default {
         {
           label: "Krusevac",
           value: "Krusevac",
+        },
+        {
+          label: "Jagodina",
+          value: "Jagodina",
+        },
+        {
+          label: "Pozarevac",
+          value: "Pozarevac",
+        },
+        {
+          label: "Novi Sad",
+          value: "Novi Sad",
+        },
+        {
+          label: "Smederevo",
+          value: "Smederevo",
+        },
+        {
+          label: "Sombor",
+          value: "Sombor",
+        },
+        {
+          label: "Uzice",
+          value: "Uzice",
+        },
+        {
+          label: "Obrenovac",
+          value: "Obrenovac",
+        },
+        {
+          label: "Pancevo",
+          value: "Pancevo",
         },
       ],
     };
@@ -209,17 +241,6 @@ label {
   font-weight: 700;
   align-self: baseline;
 }
-/*
-::before{
-    align-self: center;
-    background: linear-gradient(90deg, #63c968, #6bd1c7);
-    width: 275px;
-    color: white;
-    font-weight: 700;
-    letter-spacing: 0.2ch
-}
-*/
-
     .btn-grad {background-image: linear-gradient(to right, #63c968 0%,  #6bd1c7  51%, #63c968  100%)}
          .btn-grad {
             margin: 10px;
