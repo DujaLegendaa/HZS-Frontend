@@ -1,7 +1,7 @@
 <template>
   <q-select
-        v-model="model"
-        :options="options"
+        v-model="city"
+        :options="selectOptions"
         label="Grad" 
       />
 
@@ -47,6 +47,20 @@ export default {
       city: '',
       eventDay: '',
       description: '',
+      selectOptions: [
+          {
+              label:'Kraljevo',
+              value:'Kraljevo'
+          },
+          {
+              label:'Beograd',
+              value:'Beograd'
+          },
+          {
+              label:'Krusevac',
+              value:'Krusevac'
+          }
+      ]
     }
   },
   computed: {     

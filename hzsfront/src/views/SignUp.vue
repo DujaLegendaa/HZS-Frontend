@@ -193,13 +193,5 @@ export default {
   padding: 0;
   height: 30px;
   width: 400px;
-
-  /*
-        border: 1px solid gray;
-        border-top-style: none;
-        border-right-style: none;
-        border-left-style: none;
-        border-bottom-style: solid;
-        */
 }
 </style>
