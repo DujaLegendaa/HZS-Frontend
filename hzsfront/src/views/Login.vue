@@ -1,40 +1,41 @@
 <template>
-  <section id="Login">
+  <section id="login">
     <h1>Log in</h1>
     <error-alert v-if="errored" :title="errorMessage">
       <button @click="errored = false">Confirm</button>
     </error-alert>
     <q-form class="form" @submit.prevent="submit()">
       <label for="email">Email: </label>
-      <q-input
-        type="text"
-        placeholder="Unesite email"
-        name="email"
-        class="input"
-        id="email"
-        v-model="email"
-        required
-      />
+      <div class="input">
+        <q-input
+          type="text"
+          placeholder="Unesite email"
+          name="email"
+          class="input"
+          id="email"
+          v-model="email"
+          required
+        />
+      </div>
+
       <label for="password">Sifra: </label>
-      <q-input
-        type="password"
-        name="password"
-        class="input"
-        placeholder="Unesite sifru"
-        id="password"
-        v-model="password"
-        required
-      />
-      <p v-if="isActive" style="color: red">
+      <div class="input">
+        <q-input
+          type="password"
+          name="password"
+          class="input"
+          placeholder="Unesite sifru"
+          id="password"
+          v-model="password"
+          required
+        />
+      </div>
+      <p v-if="isActive">
         Sva polja trebaju biti ispravno popunjena.
       </p>
-      <q-button
-        type="Submit"
-        :disabled="isActive"
-        :class="[{ activeClass: !isActive }]"
-      >
+      <q-btn type="Submit" :class="[{ activeClass: !isActive }]">
         Submit
-      </q-button>
+      </q-btn>
     </q-form>
   </section>
 </template>
@@ -98,13 +99,17 @@ export default {
   width: 400px;
 }
 
-h1 {
+h1{
   margin: 1ch 0 0.1ch;
+  align-self: center;
   font-size: 8ch;
   font-weight: 700;
   color: #63d062;
 }
 
+p{
+  color: rgb(204, 50, 50);
+}
 label {
   font-size: 2ch;
   color: rgb(46, 46, 46);
