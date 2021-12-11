@@ -22,21 +22,21 @@
 export default {
   methods: {
     loggedIn() {
-      return this.$store.getters.loggedIn
+      return this.$store.getters.loggedIn;
     },
     onClick() {
-      this.$store.dispatch('logout')
-      this.$forceUpdate()
+      this.$store.dispatch("logout");
+      this.$forceUpdate();
     },
   },
-}
+};
 </script>
 
 <style>
 .routerlink {
   padding-left: 15px;
   padding-right: 15px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   letter-spacing: 0.4px;
   font-size: 19px;
   font-weight: 1000;

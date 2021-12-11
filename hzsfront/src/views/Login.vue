@@ -41,77 +41,69 @@
 
 <script>
 export default {
-  emits: ['loggedIn'],
+  emits: ["loggedIn"],
   data() {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       errored: false,
-      errorMessage: '',
-    }
+      errorMessage: "",
+    };
   },
   computed: {
     isActive() {
-      return this.email.length === 0 || this.password.length < 8
+      return this.email.length === 0 || this.password.length < 8;
     },
   },
   methods: {
     async submit() {
       try {
-        await this.$store.dispatch('login', {
+        await this.$store.dispatch("login", {
           email: this.email,
           password: this.password,
-        })
+        });
       } catch (err) {
-        this.errored = true
-        this.errorMessage = err.data.message
+        this.errored = true;
+        this.errorMessage = err.data.message;
       }
-      window.location.reload()
+      window.location.reload();
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
-  #login{
-    display: flex;
-    flex-direction: column;
-  }
+#login {
+  display: flex;
+  flex-direction: column;
+}
 
-  .form {
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    border: 2px solid gray;
-    padding: 1.3em;
-    border-radius: 0.7em;
-    background-color: rgb(255, 255, 255);
-  }
- 
-  .input {
-    all: unset;
-    margin-bottom: 40px;
-    margin-top: 0;
-    padding: 0;
-    height: 30px;
-    width: 400px;
+.form {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border: 2px solid gray;
+  padding: 1.3em;
+  border-radius: 0.7em;
+  background-color: rgb(255, 255, 255);
+}
 
-/*
-    border: 1px solid gray;
-    border-top-style: none;
-    border-right-style: none;
-    border-left-style: none;
-    border-bottom-style: solid;
-    */
-  }
+.input {
+  all: unset;
+  margin-bottom: 40px;
+  margin-top: 0;
+  padding: 0;
+  height: 30px;
+  width: 400px;
+}
 
   h1{
-        margin: 1ch 0 0.1ch;
-        align-self: center;
-        font-size: 8ch;
-        font-weight: 700;
-        color: #63d062;
+    margin: 1ch 0 0.1ch;
+    align-self: center;
+    font-size: 8ch;
+    font-weight: 700;
+    color: #63d062;
   }
 
   label {
