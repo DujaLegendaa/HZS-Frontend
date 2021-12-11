@@ -1,5 +1,5 @@
 <template>
-  <section id="Login">
+  <section id="login">
     <h1>Log in</h1>
     <error-alert v-if="errored" :title="errorMessage">
       <button @click="errored = false">Confirm</button>
@@ -106,12 +106,12 @@ export default {
     */
   }
 
-
   h1{
-    margin: 1ch 0 0.1ch;
-    font-size: 8ch;
-    font-weight: 700;
-    color: #63d062;
+        margin: 1ch 0 0.1ch;
+        align-self: center;
+        font-size: 8ch;
+        font-weight: 700;
+        color: #63d062;
   }
 
   label {

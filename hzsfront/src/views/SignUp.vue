@@ -3,64 +3,85 @@
     <h1>Sign up</h1>
     <q-form class="form" @submit.prevent="submit()">
       <label for="name">Ime: </label>
-      <q-input
-        type="text"
-        name="name"
-        class="input"
-        id="name"
-        v-model="name"
-        placeholder="Unesite svoje ime: "
-        required
-      />
-      <label for="surname">Prezime: </label>
-      <q-input
-        type="text"
-        name="surname"
-        class="input"
-        id="surname"
-        v-model="surname"
-        placeholder="Unesite svoje prezime: "
-        required
-      />
-      <q-select
-        outlined
-        class="select"
-        v-model="model"
-        :options="selectOptions"
-        label="Grad" 
-      />
+        <div class="input">
+            <q-input
+                type="text"
+                name="name"
+                class="input"
+                id="name"
+                v-model="name"
+                placeholder="Unesite svoje ime: "
+                required
+            />
+        </div>
+            <label for="surname">Prezime: </label>
+            <div class="input">
+            <q-input
+                type="text"
+                name="surname"
+                class="input"
+                id="surname"
+                v-model="surname"
+                placeholder="Unesite svoje prezime: "
+                required
+            />
+        </div>
+        <div class="radio">
+            <q-radio 
+                dense 
+                v-model="organizator" 
+                class="radio"
+                val="Organizator" 
+                label="Organizator" 
+            />
+        </div>
 
-
+        <div class="select">
+            <q-select
+                outlined
+                class="select"
+                v-model="model"
+                :options="selectOptions"
+                label="Grad" 
+            />
+        </div>
+    
       <label for="email">Email: </label>
-      <q-input
-        type="text"
-        name="email"
-        class="input"
-        id="email"
-        v-model="email"
-        required
-        placeholder="Unesite svoj email: "
-      />
+      <div class="input">
+        <q-input
+            type="text"
+            name="email"
+            class="input"
+            id="email"
+            v-model="email"
+            required
+            placeholder="Unesite svoj email: "
+        />
+      </div>
       <label for="password">Sifra: </label>
-      <q-input
-        type="password"
-        name="password"
-        class="input"
-        id="password"
-        v-model="password"
-        placeholder="Unesite svoju sifru: "
-        required
-      />
+      <div class="input">
+        <q-input
+            type="password"
+            name="password"
+            class="input"
+            id="password"
+            v-model="password"
+            placeholder="Unesite svoju sifru: "
+            required
+        />
+      </div>
       <label for="passwordConfirm">Potvdi sifru: </label>
-      <q-input
-        type="password"
-        name="passwordConfirm"
-        class="input"
-        id="passwordConfirm"
-        v-model="passwordConfirm"
-        placeholder="Potvrdite sifru: "
-        required
-      />
+      <div class="input">
+        <q-input
+            type="password"
+            name="passwordConfirm"
+            class="input"
+            id="passwordConfirm"
+            v-model="passwordConfirm"
+            placeholder="Potvrdite sifru: "
+            required
+        />
+      </div>
       <p v-if="isActive" style="color: red">
         Sva polja trebaju biti ispravno popunjena.
       </p>
@@ -143,7 +164,7 @@ export default {
 </script>
 
 <style scoped>
-    #login{
+    #signup{
         display: flex;
         flex-direction: column;
     }
@@ -154,13 +175,18 @@ export default {
         flex-direction: column;
         width: 500px;
         border: 2px solid gray;
-        padding: 1.3em;
+        padding: 2em;
         border-radius: 0.7em;
         background-color: rgb(255, 255, 255);
     }
 
-
-    .input, .select {
+    .select {
+        all: unset;
+        margin-top: 0;
+        width: 200px;
+        height: 100px;
+    }
+    .input{
         all: unset;
         margin-bottom: 40px;
         margin-top: 0;
@@ -177,8 +203,13 @@ export default {
         */
     }
 
+    .radio{
+        margin: 1ch 0;
+    }
+
     h1{
         margin: 1ch 0 0.1ch;
+        align-self: center;
         font-size: 8ch;
         font-weight: 700;
         color: #63d062;
