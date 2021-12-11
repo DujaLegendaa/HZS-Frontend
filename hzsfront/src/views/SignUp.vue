@@ -134,16 +134,16 @@ export default {
           value: "Beograd",
         },
         {
-          label: "Krusevac",
-          value: "Krusevac",
+          label: "Kruševac",
+          value: "Kruševac",
         },
         {
           label: "Jagodina",
           value: "Jagodina",
         },
         {
-          label: "Pozarevac",
-          value: "Pozarevac",
+          label: "Požarevac",
+          value: "Požarevac",
         },
         {
           label: "Novi Sad",
@@ -158,16 +158,16 @@ export default {
           value: "Sombor",
         },
         {
-          label: "Uzice",
-          value: "Uzice",
+          label: "Užice",
+          value: "Užice",
         },
         {
           label: "Obrenovac",
           value: "Obrenovac",
         },
         {
-          label: "Pancevo",
-          value: "Pancevo",
+          label: "Pančevo",
+          value: "Pančevo",
         },
       ],
     };
