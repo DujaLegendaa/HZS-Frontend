@@ -40,81 +40,80 @@
 
 <script>
 export default {
-  emits: ['loggedIn'],
+  emits: ["loggedIn"],
   data() {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       errored: false,
-      errorMessage: '',
-    }
+      errorMessage: "",
+    };
   },
   computed: {
     isActive() {
-      return this.email.length === 0 || this.password.length < 8
+      return this.email.length === 0 || this.password.length < 8;
     },
   },
   methods: {
     async submit() {
       try {
-        await this.$store.dispatch('login', {
+        await this.$store.dispatch("login", {
           email: this.email,
           password: this.password,
-        })
+        });
       } catch (err) {
-        this.errored = true
-        this.errorMessage = err.data.message
+        this.errored = true;
+        this.errorMessage = err.data.message;
       }
-      window.location.reload()
+      window.location.reload();
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
-  #login{
-    display: flex;
-    flex-direction: column;
-  }
+#login {
+  display: flex;
+  flex-direction: column;
+}
 
-  .form {
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    border: 2px solid gray;
-    padding: 1.3em;
-    border-radius: 0.7em;
-    background-color: rgb(255, 255, 255);
-  }
- 
-  .input {
-    all: unset;
-    margin-bottom: 30px;
-    margin-top: 0.5ch;
-    height: 40px;
+.form {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border: 2px solid gray;
+  padding: 1.3em;
+  border-radius: 0.7em;
+  background-color: rgb(255, 255, 255);
+}
 
-/*
+.input {
+  all: unset;
+  margin-bottom: 30px;
+  margin-top: 0.5ch;
+  height: 40px;
+
+  /*
     border: 1px solid gray;
     border-top-style: none;
     border-right-style: none;
     border-left-style: none;
     border-bottom-style: solid;
     */
-  }
+}
 
+h1 {
+  margin: 1ch 0 0.1ch;
+  font-size: 8ch;
+  font-weight: 700;
+  color: #63d062;
+}
 
-  h1{
-    margin: 1ch 0 0.1ch;
-    font-size: 8ch;
-    font-weight: 700;
-    color: #63d062;
-  }
-
-  label {
-    font-size: 2.3ch;
-    color: rgb(46, 46, 46);
-    font-weight: 700;
-    align-self: baseline;
-  }
+label {
+  font-size: 2.3ch;
+  color: rgb(46, 46, 46);
+  font-weight: 700;
+  align-self: baseline;
+}
 </style>
