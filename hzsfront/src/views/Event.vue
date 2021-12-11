@@ -1,4 +1,19 @@
-<template></template>
+<template>
+<error-alert v-if="errored" :title="errorMessage">
+    <button @click="errored = false">Confirm</button>
+  </error-alert>
+  <h1 id="title-icon">
+    <!-- dodati font awesome icon  and host name-->
+    {{orgName}}
+  </h1>
+  <!-- Grad akcije-->
+  <section>
+    <span id="info">
+      <h4>Description:</h4>
+      <p id="description">{{ description }}</p>
+    </span>
+  </section>
+</template>
 
 <script>
 const axios = require("axios");
@@ -20,6 +35,10 @@ export default {
       type: Number,
       required: true,
     },
+    orgName: {
+      type: String,
+      required: true,
+    }
   },
   data() {
     return {
