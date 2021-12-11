@@ -5,6 +5,7 @@ import SignUp from "../views/SignUp.vue";
 import CreateEvent from "../views/CreateEvent.vue";
 import EventList from "../views/EventList.vue";
 import Event from "../views/Event.vue";
+import Profile from "../views/Profile.vue";
 
 const routes = [
   {
@@ -45,6 +46,11 @@ const routes = [
     path: "/events/:id",
     name: "Event",
     component: Event,
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: Profile,
   },
 ];
 
