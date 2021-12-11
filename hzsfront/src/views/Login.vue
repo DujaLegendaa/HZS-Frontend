@@ -35,7 +35,7 @@
       </p>
       <q-btn type="Submit" :class="[{ activeClass: !isActive }]"
       style="
-        border: none; width: 275px;
+        border: none; width: 275px; font-weight: 800;
       "
       >
         Submit
@@ -119,6 +119,7 @@ h1{
             text-align: center;
             text-transform: uppercase;
             transition: 0.5s;
+            
             background-size: 200% auto;
             color: white;            
             box-shadow: 0 0 20px #eee;

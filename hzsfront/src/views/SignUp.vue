@@ -26,11 +26,11 @@
           required
         />
       </div>
-      <div class="radio">
-        <q-radio
+      <div class="check-box">
+        <q-checkbox
           dense
           v-model="organizator"
-          class="radio"
+          
           val="Organizator"
           label="Organizator"
         />
@@ -70,7 +70,7 @@
           required
         />
       </div>
-      <label for="passwordConfirm">PotvRdi sifru: </label>
+      <label for="passwordConfirm">Potvrdi sifru: </label>
       <div class="input">
         <q-input
           type="password"
@@ -104,6 +104,7 @@ export default {
   data() {
     return {
       name: "",
+      organizator: false,
       surname: "",
       email: "",
       password: "",
@@ -257,7 +258,7 @@ h1{
   color: #63d062;
 }
 
-.radio{
+.check-box{
     margin: 1ch 0 2ch;
 }
 </style>
