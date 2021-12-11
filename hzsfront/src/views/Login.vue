@@ -19,6 +19,7 @@
       <q-input
         type="password"
         name="password"
+        class="input"
         placeholder="Unesite sifru"
         id="password"
         v-model="password"
@@ -76,9 +77,11 @@ export default {
  
   .input {
     all: unset;
-    margin-bottom: 30px;
-    margin-top: 0.5ch;
-    height: 40px;
+    margin-bottom: 40px;
+    margin-top: 0;
+    padding: 0;
+    height: 30px;
+    width: 400px;
 
 /*
     border: 1px solid gray;
@@ -98,7 +101,7 @@ export default {
   }
 
   label {
-    font-size: 2.3ch;
+    font-size: 2ch;
     color: rgb(46, 46, 46);
     font-weight: 700;
     align-self: baseline;
