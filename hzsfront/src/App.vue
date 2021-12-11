@@ -1,6 +1,7 @@
 <template>
 <section>
   <topnav></topnav>
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   <router-view />
 </section>
 </template>
@@ -23,3 +24,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+*{
+  font-family: 'Lato', sans-serif;
+}
+</style>
