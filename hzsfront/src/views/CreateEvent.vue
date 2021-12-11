@@ -51,20 +51,52 @@ export default {
       eventDay: "",
       description: "",
       selectOptions: [
-        {
-          label: "Kraljevo",
-          value: "Kraljevo",
+          {
+              label:'Kraljevo',
+              value:'Kraljevo'
+          },
+          {
+              label:'Beograd',
+              value:'Beograd'
+          },
+          {
+              label:'Krusevac',
+              value:'Krusevac'
+          },
+          {
+          label: "Jagodina",
+          value: "Jagodina",
         },
         {
-          label: "Beograd",
-          value: "Beograd",
+          label: "Pozarevac",
+          value: "Pozarevac",
         },
         {
-          label: "Krusevac",
-          value: "Krusevac",
+          label: "Novi Sad",
+          value: "Novi Sad",
         },
-      ],
-    };
+        {
+          label: "Smederevo",
+          value: "Smederevo",
+        },
+        {
+          label: "Sombor",
+          value: "Sombor",
+        },
+        {
+          label: "Uzice",
+          value: "Uzice",
+        },
+        {
+          label: "Obrenovac",
+          value: "Obrenovac",
+        },
+        {
+          label: "Pancevo",
+          value: "Pancevo",
+        },
+      ]
+    }
   },
   computed: {
     isActive() {
