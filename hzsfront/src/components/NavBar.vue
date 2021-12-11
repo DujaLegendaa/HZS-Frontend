@@ -2,6 +2,7 @@
   <nav>
     <section id="alwaysOn">
       <router-link class="routerlink" to="/">Home</router-link>
+      <router-link class="routerlink" to="/events">Events</router-link>
     </section>
 
     <section v-if="!this.loggedIn()" id="notLoggedIn">

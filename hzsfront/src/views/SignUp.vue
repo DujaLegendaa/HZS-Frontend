@@ -88,7 +88,7 @@
       <div class="btn-grad">
         <q-btn
             type="Submit"
-            style="border: none; width: 275px;"
+            style="border: none; width: 275px; font-weight: 700; letter-spacing: 0.2ch;"
             :disabled="isActive"
             :class="[{ activeClass: !isActive }]"
         >
