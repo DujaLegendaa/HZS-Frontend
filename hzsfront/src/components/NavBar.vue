@@ -10,6 +10,12 @@
       <router-link class="routerlink" to="/signup">Sign up</router-link>
     </section>
 
+    <section v-if="this.isOrganizator()" id="isOrganizator">
+      <router-link class="routerlink" to="/createEvent"
+        >Create Event</router-link
+      >
+    </section>
+
     <section v-if="this.loggedIn()" id="loggedIn">
       <router-link class="routerlink" @click="onClick()" to="/"
         >Log out</router-link
@@ -23,6 +29,9 @@ export default {
   methods: {
     loggedIn() {
       return this.$store.getters.loggedIn;
+    },
+    isOrganizator() {
+      return this.$store.getters.isOrganizator;
     },
     onClick() {
       this.$store.dispatch("logout");

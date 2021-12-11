@@ -33,15 +33,9 @@
       <p v-if="isActive">
         Sva polja trebaju biti ispravno popunjena.
       </p>
-      
-      <q-button
-        
-        type="Submit"
-        :disabled="isActive"
-        :class="[{ activeClass: !isActive }]"
-      >
+      <q-btn type="Submit" :class="[{ activeClass: !isActive }]">
         Submit
-      </q-button>
+      </q-btn>
     </q-form>
   </section>
 </template>
