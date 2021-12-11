@@ -1,16 +1,19 @@
 <template>
- <router-view />
+<section>
+  <topnav></topnav>
+  <router-view />
+</section>
 </template>
 
 <script>
 import { ref } from 'vue' 
-import HelloWorld from './components/HelloWorld.vue'
+import NavBar from './components/NavBar.vue'
 
 export default {
   name: 'LayoutDefault',
 
   components: {
-    HelloWorld
+    NavBar
   },
 
   setup () {

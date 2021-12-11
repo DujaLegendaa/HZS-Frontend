@@ -53,6 +53,20 @@ export default {
     isActive() {
       return this.email.length === 0 || this.password.length < 8
     },
+  },
+  methods: {
+    async submit() {
+      try {
+        await this.$store.dispatch('login', {
+          email: this.email,
+          password: this.password,
+        })
+      } catch (err) {
+        this.errored = true
+        this.errorMessage = err.data.message
+      }
+      window.location.reload()
+    },
   }
 }
 </script>
