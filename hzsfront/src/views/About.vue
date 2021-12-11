@@ -1,5 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>Žabice</h1>
+    <h5>Tim Žabice čine učenici Kraljevačke Gimnazije. Čiji je glavni cilj očuvanje prirode i gradova Srbije. Smatramo da je najbolji način za podsticanje ljudi na očuvanje i ne zagadjivanje prirode putem dogadjaja od kojih će imati benefit, pre svega priroda, ali i sami učesni.</h5>
   </div>
 </template>
