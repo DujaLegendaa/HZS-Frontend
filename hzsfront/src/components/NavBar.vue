@@ -1,27 +1,32 @@
 <template>
   <nav>
-    <section id="alwaysOn">
-      <router-link class="routerlink" to="/">Home</router-link>
-      <router-link class="routerlink" to="/events">Events</router-link>
-    </section>
+    <div id="left">
+      <section id="alwaysOn">
+        <router-link class="routerlink" to="/">Home</router-link>
+        <router-link class="routerlink" to="/events">Events</router-link>
+      </section>
+    </div>
 
-    <section v-if="!this.loggedIn()" id="notLoggedIn">
-      <router-link class="routerlink" to="/login">Log in</router-link>
+    <div id="right">
+      <section v-if="!this.loggedIn()" id="notLoggedIn">
+        <router-link class="routerlink" to="/login">Log in</router-link>
 
-      <router-link class="routerlink" to="/signup">Sign up</router-link>
-    </section>
+        <router-link class="routerlink" to="/signup">Sign up</router-link>
+      </section>
 
-    <section v-if="this.isOrganizator()" id="isOrganizator">
-      <router-link class="routerlink" to="/createEvent"
-        >Create Event</router-link
-      >
-    </section>
+      <section v-if="this.isOrganizator()" id="isOrganizator">
+        <router-link class="routerlink" to="/createEvent"
+          >Create Event</router-link
+        >
+      </section>
 
-    <section v-if="this.loggedIn()" id="loggedIn">
-      <router-link class="routerlink" @click="onClick()" to="/"
-        >Log out</router-link
-      >
-    </section>
+      <section v-if="this.loggedIn()" id="loggedIn">
+        <router-link class="routerlink" to="/profile">Profile</router-link>
+        <router-link class="routerlink" @click="onClick()" to="/"
+          >Log out</router-link
+        >
+      </section>
+    </div>
   </nav>
 </template>
 
@@ -42,7 +47,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .routerlink {
   padding-left: 15px;
   padding-right: 15px;
@@ -67,5 +72,9 @@ nav {
 nav a:hover {
   cursor: pointer;
   color: rgb(156, 189, 170);
+}
+
+#right {
+  display: flex;
 }
 </style>
