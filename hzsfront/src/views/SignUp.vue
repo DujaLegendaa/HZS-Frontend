@@ -27,9 +27,8 @@
         class="select"
         v-model="model"
         :options="selectOptions"
-        label="Grad" 
+        label="Grad"
       />
-
 
       <label for="email">Email: </label>
       <q-input
@@ -71,35 +70,35 @@
       >
         Submit
       </q-button>
-      </q-form>
-      </section>
+    </q-form>
+  </section>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      name: '',
-      surname: '',
-      email: '',
-      password: '',
-      passwordConfirm: '',
-      city: '',
+      name: "",
+      surname: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+      city: "",
       selectOptions: [
-          {
-              label:'Kraljevo',
-              value:'Kraljevo'
-          },
-          {
-              label:'Beograd',
-              value:'Beograd'
-          },
-          {
-              label:'Krusevac',
-              value:'Krusevac'
-          }
-      ]
-    }
+        {
+          label: "Kraljevo",
+          value: "Kraljevo",
+        },
+        {
+          label: "Beograd",
+          value: "Beograd",
+        },
+        {
+          label: "Krusevac",
+          value: "Krusevac",
+        },
+      ],
+    };
   },
 
   computed: {
@@ -111,7 +110,7 @@ export default {
         this.password.length < 8 ||
         this.passwordConfirm != this.password ||
         this.city === 0
-      )
+      );
     },
   },
   methods: {
@@ -121,75 +120,73 @@ export default {
         this.username.length === 0 ||
         this.password.length < 8 ||
         this.passwordConfirm != this.password
-      )
+      );
     },
     nameError() {
-      return this.name.length === 0
+      return this.name.length === 0;
     },
     surnameError() {
-      return this.surname.length === 0
+      return this.surname.length === 0;
     },
     emailError() {
-      return this.email.length === 0
+      return this.email.length === 0;
     },
     passwordLengthError() {
-      return this.password.length < 8
+      return this.password.length < 8;
     },
     passwordMatch() {
-      return this.passwordConfirm != this.password
+      return this.passwordConfirm != this.password;
     },
-},
-}
+  },
+};
 </script>
 
 <style scoped>
-    #login{
-        display: flex;
-        flex-direction: column;
-    }
+#login {
+  display: flex;
+  flex-direction: column;
+}
 
-    .form {
-        align-self: center;
-        display: flex;
-        flex-direction: column;
-        width: 500px;
-        border: 2px solid gray;
-        padding: 1.3em;
-        border-radius: 0.7em;
-        background-color: rgb(255, 255, 255);
-    }
+.form {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border: 2px solid gray;
+  padding: 1.3em;
+  border-radius: 0.7em;
+  background-color: rgb(255, 255, 255);
+}
 
+.input,
+.select {
+  all: unset;
+  margin-bottom: 40px;
+  margin-top: 0;
+  padding: 0;
+  height: 30px;
+  width: 400px;
 
-    .input, .select {
-        all: unset;
-        margin-bottom: 40px;
-        margin-top: 0;
-        padding: 0;
-        height: 30px;
-        width: 400px;
-
-    /*
+  /*
         border: 1px solid gray;
         border-top-style: none;
         border-right-style: none;
         border-left-style: none;
         border-bottom-style: solid;
         */
-    }
+}
 
-    h1{
-        margin: 1ch 0 0.1ch;
-        font-size: 8ch;
-        font-weight: 700;
-        color: #63d062;
-    }
+h1 {
+  margin: 1ch 0 0.1ch;
+  font-size: 8ch;
+  font-weight: 700;
+  color: #63d062;
+}
 
-
-    label {
-        font-size: 2.3ch;
-        color: rgb(46, 46, 46);
-        font-weight: 700;
-        align-self: baseline;
-    }
+label {
+  font-size: 2.3ch;
+  color: rgb(46, 46, 46);
+  font-weight: 700;
+  align-self: baseline;
+}
 </style>
-
