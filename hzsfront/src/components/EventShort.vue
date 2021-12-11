@@ -1,11 +1,8 @@
 <template>
   <p @click="clicked()">
-    <span id="name"> {{ name }} </span>
-    <span id="category">{{ category.toUpperCase() }}</span>
-    <span id="macroANDstar"
-      ><span id="macro">C: {{ carbs }} P: {{ proteins }} F: {{ fats }}</span
-      ><span id="stars">{{ starsNum }}<fa icon="star" id="star"></fa></span
-    ></span>
+    <span id="date"> {{ date }} </span>
+    <span id="city">{{ city }}</span>
+    <span id="numParticipants">{{ numParticipants }}</span>
   </p>
 </template>
 
@@ -34,7 +31,7 @@ export default {
   },
   methods: {
     clicked() {
-      this.$router.push(`/recipes/${this.id}`);
+      this.$router.push(`/events/${this.id}`);
     },
   },
 };
