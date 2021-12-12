@@ -1,68 +1,58 @@
 <template>
-<error-alert v-if="errored" :title="errorMessage">
-    <button @click="errored = false">Confirm</button>
-  </error-alert>
-  <section class="form">
-    <header>
-      <div id="title-icon">
-        <h1>
-          <!-- dodati font awesome icon  and host name-->
-          FROG BUFA BU
-          {{orgName}}
-        </h1>
-      </div>
-      <p>12312312{{grad}}</p>
-    </header>
+  <div>
+    <error-alert v-if="errored" :title="errorMessage">
+      <button @click="errored = false">Confirm</button>
+    </error-alert>
+    <div id="icons" v-if="creator">
+      <q-icon name="qr_code_2" class="icon" @click="generateQR" id="qr_code" />
+      <q-icon name="edit" class="icon" @click="editEvent" id="edit" />
+      <q-icon name="delete" class="icon" @click="deleteEvent" id="trash" />
+    </div>
+    <section class="form">
+      <header>
+        <div id="title-icon">
+          <h1>
+            <!-- dodati font awesome icon  and host name-->
+            {{ orgName }}
+          </h1>
+        </div>
 
-    <!-- Grad akcije-->
-    <div id="info">
+        <p>{{ city }}</p>
+      </header>
+
+      <!-- Grad akcije-->
+      <div id="info">
         <h4>Description:</h4>
         <p id="description">{{ description }}</p>
-    </div>
-    
-    <div id="btn">
-      <q-btn type="Submit" :class="[{ activeClass: !isActive }]"
-        class="btn-grad"
-        style="
-          border: none;
-          width: 275px;
-          font-weight: 750;
-          letter-spacing: 0.2ch;
-        ">
+      </div>
 
+      <div id="btn">
+        <q-btn
+          type="Submit"
+          :class="[{ activeClass: !isActive }]"
+          class="btn-grad"
+          style="
+            border: none;
+            width: 275px;
+            font-weight: 750;
+            letter-spacing: 0.2ch;
+          "
+        >
           Participate
         </q-btn>
-    </div>
-  </section>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
 const axios = require("axios");
 export default {
-  props: {
-    name: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    city: {
-      type: Date,
-      required: true,
-    },
-    numParticipants: {
-      type: Number,
-      required: true,
-    },
-    orgName: {
-      type: String,
-      required: true,
-    }
-  },
   data() {
     return {
+      orgName: "",
+      city: "",
+      description: "",
       loaded: false,
       errored: false,
       errorMessage: "",
@@ -91,7 +81,7 @@ export default {
         this.errorMessage = err.response.data.message;
       }
     },
-    async deleteRecipe() {
+    async deleteEvent() {
       var config = {
         method: "delete",
         url: process.env.VUE_APP_URL + "events/" + this.$route.params.id,
@@ -107,7 +97,10 @@ export default {
         this.errorMessage = err.response.data.message;
       }
     },
-    editRecipe() {
+    generateQR() {
+      this.$router.push(this.$route.path + "/codes");
+    },
+    editEvent() {
       this.$router.push(this.$route.path + "/edit");
     },
   },
@@ -120,7 +113,10 @@ export default {
     };
     axios(config)
       .then(function (response) {
-        that.ingredients = response.data.data.doc.ingredients;
+        const ev = response.data.data.doc;
+        that.orgName = ev.orgName;
+        that.description = ev.description;
+        that.city = ev.city;
         that.isCreator().then(function () {
           that.loaded = true;
         });
@@ -133,37 +129,39 @@ export default {
 </script>
 
 <style scoped>
-
 .btn-grad {
-  background-image: linear-gradient(to right, #63c982 0%,  #6bd1c7  51%, #63c982  100%)
+  background-image: linear-gradient(
+    to right,
+    #63c982 0%,
+    #6bd1c7 51%,
+    #63c982 100%
+  );
 }
 
 .btn-grad {
-     margin: 10px;
-     align-self: center;
-     width: 275px;
-     text-align: center;
-     text-transform: uppercase;
-     transition: 0.5s;
-            
-    background-size: 200% auto;
-    color: white;            
-    box-shadow: 0 0 20px #eee;
-    border-radius: 5px;
-            
+  margin: 10px;
+  align-self: center;
+  width: 275px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 5px;
 }
 
-#btn{
+#btn {
   display: flex;
   justify-content: center;
 }
 
-h4{
+h4 {
   margin: 1% 0 3%;
   font-size: 3ch;
   font-weight: 1000;
 }
-
 
 .form {
   display: grid;
@@ -172,10 +170,10 @@ h4{
   padding: 1% 3%;
   border: 0.2ch solid rgb(155, 155, 155);
   border-radius: 8px;
-  margin: 1% 20%;
+  margin: 0% 20% 1% 20%;
 }
 
-#description{
+#description {
   width: 500px;
   height: 200px;
   overflow-y: auto;
@@ -183,20 +181,18 @@ h4{
 }
 
 .btn-grad:hover {
-    background-position: right center; 
-    color: #fff;
-    text-decoration: none;
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
 }
 
-
-header{
+header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
 }
 
-p{
+p {
   height: 100%;
   display: flex;
   align-items: center;
@@ -204,11 +200,37 @@ p{
   font-weight: 700;
   color: #3f7c51;
 }
-h1{
+h1 {
   font-size: 4ch;
   font-weight: 1000;
   color: #63c982;
   height: 100%;
   margin: auto;
+}
+#icons {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0% 20%;
+}
+#icons .icon {
+  margin: 0.1ch 0.2ch;
+  font-size: 40px;
+  color: gray;
+}
+
+#trash:hover {
+  transition: 0.3s ease;
+  cursor: pointer;
+  color: rgb(247, 75, 75);
+}
+#edit:hover {
+  transition: 0.3s ease;
+  cursor: pointer;
+  color: cyan;
+}
+#qr_code:hover {
+  transition: 0.3s ease;
+  cursor: pointer;
+  color: black;
 }
 </style>
