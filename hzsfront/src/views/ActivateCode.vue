@@ -1,19 +1,32 @@
 <template>
   <div>
-    <h1>Aktiviraj kod</h1>
-    <h4>Za: {{ forUser }}</h4>
-    <q-btn></q-btn>
+    <q-btn @click="click()">Aktiviraj kod</q-btn>
   </div>
 </template>
 
 <script>
 import CodeCard from "../components/CodeCard.vue";
+const axios = require("axios");
 export default {
   components: { CodeCard },
-  props: {
-    forUser: {
-      type: String,
-      required: true,
+  methods: {
+    async click() {
+      const config = {
+        method: "post",
+        url:
+          process.env.VUE_APP_URL +
+          "codes/" +
+          this.$route.params.id +
+          "/consume",
+        headers: {
+          Authorization: "Bearer " + this.$store.getters.token,
+        },
+      };
+      try {
+        await axios(config);
+      } catch (err) {
+        console.log(err);
+      }
     },
   },
 };
