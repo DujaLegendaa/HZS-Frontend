@@ -4,6 +4,7 @@
       <section id="alwaysOn">
         <router-link class="routerlink" to="/">Glavna strana</router-link>
         <router-link class="routerlink" to="/events">Dogadjaji</router-link>
+        <router-link class="routerlink" to="/companies">Kompanije</router-link>
       </section>
     </div>
 
@@ -11,7 +12,9 @@
       <section v-if="!this.loggedIn()" id="notLoggedIn">
         <router-link class="routerlink" to="/login">Prijavite se</router-link>
 
-        <router-link class="routerlink" id="signup" to="/signup">Registrujte se</router-link>
+        <router-link class="routerlink" id="signup" to="/signup"
+          >Registrujte se</router-link
+        >
       </section>
 
       <section v-if="this.isOrganizator()" id="isOrganizator">
@@ -57,7 +60,6 @@ export default {
   font-weight: 1000;
 }
 
-
 nav a {
   text-decoration: none;
   all: unset;
@@ -85,12 +87,16 @@ nav a:hover {
 #signup {
   border-radius: 100rem;
   padding: 1rem;
-  padding: .5rem 3rem;
+  padding: 0.5rem 3rem;
   margin-right: 1rem;
-  color: linear-gradient(to right, #63c968 0%,  #6bd1c7  51%, #63c968  100%);
+  color: linear-gradient(to right, #63c968 0%, #6bd1c7 51%, #63c968 100%);
   box-shadow: 0 0 6px 0 rgba(179, 96, 212, 0.5);
   border: solid 5px transparent;
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(to right, #63c968 0%,  #6bd1c7  51%, #63c968  100%);
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(to right, #63c968 0%, #6bd1c7 51%, #63c968 100%);
   background-clip: content-box, border-box;
   box-shadow: 2px 1000px 1px #fff inset;
 }

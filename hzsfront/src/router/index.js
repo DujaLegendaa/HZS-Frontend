@@ -8,6 +8,7 @@ import Event from "../views/Event.vue";
 import Profile from "../views/Profile.vue";
 import Codes from "../views/Codes.vue";
 import ActivateCode from "../views/ActivateCode.vue";
+import Companies from "../views/Companies.vue";
 
 const routes = [
   {
@@ -63,6 +64,11 @@ const routes = [
     path: "/codes/:id/activate",
     name: "ActivateCode",
     component: ActivateCode,
+  },
+  {
+    path: "/companies",
+    name: "Companies",
+    component: Companies,
   },
 ];
 
