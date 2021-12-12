@@ -85,7 +85,6 @@ nav a:hover {
 #signup {
   border-radius: 100rem;
   padding: 1rem;
-  font-size: 1rem;
   padding: .5rem 3rem;
   margin-right: 1rem;
   color: linear-gradient(to right, #63c968 0%,  #6bd1c7  51%, #63c968  100%);

@@ -8,6 +8,7 @@
       :date="event.date"
       :numParticipants="event.numParticipants"
       :orgName="event.orgName"
+      :points="event.pointsPerParticipant"
     ></event-short>
   </section>
 </template>
