@@ -9,6 +9,7 @@ import Profile from "../views/Profile.vue";
 import Codes from "../views/Codes.vue";
 import ActivateCode from "../views/ActivateCode.vue";
 import Companies from "../views/Companies.vue";
+import UserList from "../views/UserList.vue";
 
 const routes = [
   {
@@ -49,6 +50,11 @@ const routes = [
     path: "/events/:id",
     name: "Event",
     component: Event,
+  },
+  {
+    path: "/events/:id/users",
+    name: "UserList",
+    component: UserList,
   },
   {
     path: "/profile",

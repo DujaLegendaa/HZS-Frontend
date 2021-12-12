@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <q-btn @click="click()">Aktiviraj kod</q-btn>
+  <div id="d">
+    <q-btn @click="click()" class="btn-grad">Aktiviraj kod</q-btn>
   </div>
 </template>
 
@@ -32,4 +32,35 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.btn-grad {
+  background-image: linear-gradient(
+    to right,
+    #63c982 0%,
+    #6bd1c7 51%,
+    #63c982 100%
+  );
+}
+
+.btn-grad {
+  margin: 10px;
+  align-self: center;
+  width: 400px;
+  height: 70px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 32px;
+  transition: 0.5s;
+
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 5px;
+}
+#d {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+</style>

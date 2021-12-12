@@ -1,6 +1,12 @@
 <template>
   <div>
     <div id="icons" v-if="creator">
+      <q-icon
+        name="visibility"
+        class="icon"
+        @click="displayUsers"
+        id="display"
+      />
       <q-icon name="qr_code_2" class="icon" @click="generateQR" id="qr_code" />
       <q-icon name="edit" class="icon" @click="editEvent" id="edit" />
       <q-icon name="delete" class="icon" @click="deleteEvent" id="trash" />
@@ -25,7 +31,7 @@
       <p id="participants">Broj učesnika:</p>
       <p id="num-participants">{{ numParticipants }}</p>
 
-      <div id="btn" v-if="this.$store.getters.loggedIn || !creator">
+      <div id="btn" v-if="this.$store.getters.loggedIn && !creator">
         <q-btn
           type="Submit"
           @click="participate"
@@ -50,6 +56,7 @@ const axios = require("axios");
 export default {
   data() {
     return {
+      id: "",
       orgName: "",
       city: "",
       description: "",
@@ -146,6 +153,9 @@ export default {
     editEvent() {
       this.$router.push(this.$route.path + "/edit");
     },
+    displayUsers() {
+      this.$router.push(this.$route.path + "/users");
+    },
   },
   mounted() {
     const that = this;
@@ -158,6 +168,7 @@ export default {
       .then(function (response) {
         const ev = response.data.data.doc;
         that.numParticipants = ev.numParticipants;
+        that.id = ev._id;
         that.orgName = ev.orgName;
         that.description = ev.description;
         that.city = ev.city;
@@ -293,5 +304,11 @@ h1 {
   font-weight: 600;
   display: flex;
   align-items: center;
+}
+
+#display:hover {
+  transition: 0.3s ease;
+  cursor: pointer;
+  color: yellow;
 }
 </style>
