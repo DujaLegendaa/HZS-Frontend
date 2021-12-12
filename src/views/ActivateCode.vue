@@ -24,8 +24,10 @@ export default {
       };
       try {
         await axios(config);
+        this.$router.push("/profile");
       } catch (err) {
         console.log(err);
+        this.$router.push("/profile");
       }
     },
   },
