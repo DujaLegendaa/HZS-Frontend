@@ -9,6 +9,23 @@
 
     <p>Poeni: {{ points }}</p>
     <p>Grad: {{ city }}</p>
+
+    <div class="sec-2">
+      <span class="first">
+        <p>SBB poeni:</p>
+        <p>{{points[0]}}</p>
+      </span>
+
+      <span class="second">
+        <p>Gigatron poeni:</p>
+        <p>{{points[1]}}</p>
+      </span>
+
+      <span class="third">
+        <p>Tehnomedia poeni:</p>
+        <p>{{points[2]}}</p>
+      </span>
+    </div>
   </section>
 </template>
 
@@ -52,6 +69,22 @@ export default {
 </script>
 
 <style scoped>
+
+.first, .second, .third{
+  display: grid;
+  padding: 2% 5%;
+  border: 0.2ch solid rgb(155, 155, 155);
+  border-radius: 8px;
+}
+
+.sec-2{
+  display: grid;
+  margin: 3ch 0;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+}
+
+
 h4 {
   margin: 1% 0 3%;
   font-size: 3ch;
@@ -61,6 +94,7 @@ h4 {
 .form {
   display: grid;
   grid-column: 3fr;
+  background-color: white;
   grid-column-gap: 0.3em;
   padding: 1% 3%;
   border: 0.2ch solid rgb(155, 155, 155);
