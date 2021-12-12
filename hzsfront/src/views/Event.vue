@@ -215,7 +215,7 @@ h4 {
   padding: 1% 3%;
   border: 0.2ch solid rgb(155, 155, 155);
   border-radius: 8px;
-  margin: 5% 20% 1% 20%;
+  margin: 1% 20% 1% 20%;
 }
 
 #desc {
@@ -247,7 +247,7 @@ h1 {
 #icons {
   display: flex;
   justify-content: flex-end;
-  margin: 0% 20%;
+  margin: 1% 20% 0;
 }
 #icons .icon {
   margin: 0.1ch 0.2ch;

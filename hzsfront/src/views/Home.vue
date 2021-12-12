@@ -1,5 +1,23 @@
 <template>
-<div class='home'>
-<h5>Tim Žabice čine učenici Kraljevačke Gimnazije. Čiji je glavni cilj očuvanje prirode i gradova Srbije. Smatramo da je najbolji način za podsticanje ljudi na očuvanje i ne zagadjivanje prirode putem dogadjaja od kojih će imati benefit, pre svega priroda, ali i sami učesni.</h5>
-</div>
+    <div class='home'>
+        <img id="background" src="../assets/frog3.png"/>
+    </div>
 </template>
+
+<style scoped>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    }
+  .home > #background {
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+    max-height: 100%;
+    max-width: 100%;
+  }
+  .home {
+    position: relative;               
+  }
+</style>

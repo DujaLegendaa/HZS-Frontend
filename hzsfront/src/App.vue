@@ -2,6 +2,7 @@
 <section>
   <topnav></topnav>
   <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  
   <router-view />
 </section>
 </template>
@@ -25,8 +26,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 *{
   font-family: 'Lato', sans-serif;
+}
+
+body{
+  background-image: url("../src/assets/test2.png");
+  background-color: rgba(255,255,255,0.5);
 }
 </style>
