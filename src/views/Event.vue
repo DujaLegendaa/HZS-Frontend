@@ -12,11 +12,8 @@
             <!-- dodati font awesome icon  and host name-->
             {{ orgName }}
           </h1>
-
-          
         </div>
         <p id="city">{{ city }}</p>
-        
       </header>
 
       <!-- Grad akcije-->
@@ -25,11 +22,10 @@
         <p id="desc">{{ description }}</p>
       </div>
 
-
       <p id="participants">Broj učesnika:</p>
-      <p id="num-participants"> {{numParticipants}}</p>
+      <p id="num-participants">{{ numParticipants }}</p>
 
-      <div id="btn" v-if="this.$store.getters.loggedIn">
+      <div id="btn" v-if="this.$store.getters.loggedIn || !creator">
         <q-btn
           type="Submit"
           @click="participate"
@@ -62,7 +58,7 @@ export default {
       errorMessage: "",
       creator: false,
       isParticipatingBool: false,
-      numParticipants: 0
+      numParticipants: 0,
     };
   },
   computed: {
@@ -207,13 +203,12 @@ export default {
   justify-content: center;
 }
 
-#participants{
+#participants {
   font-size: 2.5ch;
   font-weight: 600;
-
 }
 
-#num-participants{
+#num-participants {
   font-size: 2.3ch;
   font-weight: 500;
 }
