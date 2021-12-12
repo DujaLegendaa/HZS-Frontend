@@ -17,7 +17,7 @@
           </h1>
         </div>
 
-        <p>{{ city }}</p>
+        <p id="city">{{ city }}</p>
       </header>
 
       <!-- Grad akcije-->
@@ -170,10 +170,12 @@ h4 {
   padding: 1% 3%;
   border: 0.2ch solid rgb(155, 155, 155);
   border-radius: 8px;
-  margin: 0% 20% 1% 20%;
+  margin: 5% 20% 1% 20%;
 }
 
 #description {
+  text-align: top;
+  display: flex;
   width: 500px;
   height: 200px;
   overflow-y: auto;
@@ -192,16 +194,18 @@ header {
   justify-content: space-between;
 }
 
-p {
+#city{
+  font-size: 2.7ch;
+  margin-right: 2ch;
   height: 100%;
   display: flex;
   align-items: center;
-  font-size: 2ch;
+  font-size: 3ch;
   font-weight: 700;
   color: #3f7c51;
 }
 h1 {
-  font-size: 4ch;
+  font-size: 4.5ch;
   font-weight: 1000;
   color: #63c982;
   height: 100%;

@@ -2,10 +2,10 @@
   <section class="form">
     <header>
       <div id="title-icon">
-        <h1>
+        <p class="title">
           <!-- dodati font awesome icon  and host name-->
           BUDJA BU{{name}} {{surname}}
-        </h1>
+        </p>
         <p id="orgName" v-if="isOrganizer">Ime organizacije: {{ orgName }}</p>
       </div>
       
@@ -108,8 +108,8 @@ p{
   color: #3f7c51;
 }
 
-h1{
-  font-size: 4ch;
+.title{
+  font-size: 5ch;
   font-weight: 1000;
   color: #63c982;
   height: 100%;
