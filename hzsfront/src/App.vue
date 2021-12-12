@@ -31,6 +31,10 @@ export default {
   font-family: 'Lato', sans-serif;
 }
 
+p, h4, h1{
+  color: rgb(51, 51, 51);
+}
+
 body{
   background-image: url("../src/assets/test2.png");
   background-color: rgba(255,255,255,0.5);

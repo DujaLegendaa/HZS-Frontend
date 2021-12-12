@@ -2,6 +2,7 @@
   <section id="createevent">
     <h1>Kreiraj dogadjaj</h1>
     <q-form class="form" @submit.prevent="submit()">
+      <p class="labele">Mesto okupljanja</p>
       <q-select
         outlined
         class="select"
@@ -46,8 +47,9 @@
         rows="10"
         v-model="description"
       ></textarea>
+      <p class="labele">Poeni po učesniku</p>
       <q-input v-model="pointsPerParticipant" class="input"></q-input>
-      <p v-if="isActive" class="warnings" style="color: red">
+      <p v-if="isActive" class="warnings">
         Sva polja moraju biti ispravno popunjena.
       </p>
       <q-btn
@@ -157,6 +159,7 @@ export default {
 </script>
 
 <style scoped>
+
 #createevent {
   display: flex;
   flex-direction: column;
@@ -168,7 +171,7 @@ export default {
   align-self: center;
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 650px;
   border: 2px solid gray;
   padding: 2em;
   border-radius: 0.7em;
@@ -177,7 +180,7 @@ export default {
 
 .labele {
   font-size: 2.5ch;
-  color: rgb(46, 46, 46);
+  color: rgb(51, 51, 51);
   font-weight: 700;
   align-self: baseline;
   margin-bottom: 1%;
@@ -198,7 +201,7 @@ export default {
 
 .warnings {
   color: rgb(204, 50, 50);
-  font-size: 1.9ch;
+  font-size: 1.5ch;
   font-weight: 750;
 }
 label {
@@ -217,8 +220,10 @@ label {
 }
 .btn-grad {
   margin: 10px;
+  margin-top:20px;
   align-self: center;
   width: 275px;
+  height: 40px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
