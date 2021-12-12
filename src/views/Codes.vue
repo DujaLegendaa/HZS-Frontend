@@ -1,6 +1,7 @@
 <template>
   <div id="based">
     <code-card
+      class="c"
       v-for="code in codeList"
       :key="code._id"
       :id="code._id"
@@ -41,7 +42,13 @@ export default {
 </script>
 
 <style scoped>
+.c {
+  background-color: white;
+  width: fit-content;
+  padding: 2ch;
+}
 #based {
+  margin: 2% 20%;
   display: grid;
 
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

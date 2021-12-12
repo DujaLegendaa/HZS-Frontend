@@ -66,9 +66,13 @@ export default {
   display: flex;
   flex-direction: column;
   border: 1px solid gray;
+  border-radius: 8px;
 }
 img {
   height: 300px;
   width: 300px;
+}
+p {
+  font-size: 22px;
 }
 </style>
