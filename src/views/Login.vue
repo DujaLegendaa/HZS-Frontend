@@ -1,9 +1,6 @@
 <template>
   <section id="login">
-    <h1>Log in</h1>
-    <error-alert v-if="errored" :title="errorMessage">
-      <button @click="errored = false">Confirm</button>
-    </error-alert>
+    <h1>Prijavite se</h1>
     <q-form class="form" @submit.prevent="submit()">
       <label for="email">Email: </label>
       <div class="input">
@@ -42,7 +39,7 @@
           letter-spacing: 0.2ch;
         "
       >
-        Submit
+        Potvrdite
       </q-btn>
     </q-form>
   </section>

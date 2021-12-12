@@ -1,6 +1,6 @@
 <template>
   <section id="signup">
-    <h1>Sign up</h1>
+    <h1>Registrujte se</h1>
     <q-form class="form" @submit.prevent="submit()">
       <label for="name">Ime: </label>
       <div class="input">
@@ -106,7 +106,7 @@
           :disabled="isActive"
           :class="[{ activeClass: !isActive }]"
         >
-          Submit
+          Potvrdite
         </q-btn>
       </div>
     </q-form>
