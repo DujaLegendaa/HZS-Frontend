@@ -1,18 +1,24 @@
 <template>
   <section id="createevent">
     <h1>Kreiraj dogadjaj</h1>
-    <q-form class="form" @submit.prevent='submit()'>
+    <q-form class="form" @submit.prevent="submit()">
       <q-select
-          outlined
-          class="select"
-          v-model="city"
-          :options="selectOptions"
-          label="Grad"
-        />
-      
+        outlined
+        class="select"
+        v-model="city"
+        :options="selectOptions"
+        label="Grad"
+      />
+
       <div class="q-pa-md" style="max-width: 300px">
         <div class="labele">Datum</div>
-        <q-input class="input" filled v-model="eventDay" mask="date" :rules="['date']">
+        <q-input
+          class="input"
+          filled
+          v-model="eventDay"
+          mask="date"
+          :rules="['date']"
+        >
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer">
               <q-popup-proxy
@@ -33,13 +39,14 @@
       </div>
       <div class="labele">Opis dogadjaja</div>
       <textarea
-          placeholder="Unesite opis dogadjaja"
-          name="description"
-          id="description"
-          cols="30"
-          rows="10"
-          v-model="description"
-        ></textarea>
+        placeholder="Unesite opis dogadjaja"
+        name="description"
+        id="description"
+        cols="30"
+        rows="10"
+        v-model="description"
+      ></textarea>
+      <q-input v-model="pointsPerParticipant" class="input"></q-input>
       <p v-if="isActive" class="warnings" style="color: red">
         Sva polja moraju biti ispravno popunjena.
       </p>
@@ -56,26 +63,28 @@
 </template>
 
 <script>
+const axios = require("axios");
 export default {
   data() {
     return {
       city: "",
       eventDay: "",
       description: "",
+      pointsPerParticipant: 0,
       selectOptions: [
-          {
-              label:'Kraljevo',
-              value:'Kraljevo'
-          },
-          {
-              label:'Beograd',
-              value:'Beograd'
-          },
-          {
-              label:'Kruševac',
-              value:'Kruševac'
-          },
-          {
+        {
+          label: "Kraljevo",
+          value: "Kraljevo",
+        },
+        {
+          label: "Beograd",
+          value: "Beograd",
+        },
+        {
+          label: "Kruševac",
+          value: "Kruševac",
+        },
+        {
           label: "Jagodina",
           value: "Jagodina",
         },
@@ -107,8 +116,8 @@ export default {
           label: "Pančevo",
           value: "Pančevo",
         },
-      ]
-    }
+      ],
+    };
   },
   computed: {
     isActive() {
@@ -117,6 +126,31 @@ export default {
         this.eventDay.length === 0 ||
         this.description.length === 0
       );
+    },
+  },
+  methods: {
+    async submit() {
+      const config = {
+        method: "post",
+        url: process.env.VUE_APP_URL + "events",
+        data: {
+          city: this.city.value,
+          date: this.eventDay,
+          description: this.description,
+          pointsPerParticipant: this.pointsPerParticipant,
+        },
+        headers: {
+          Authorization: "Bearer " + this.$store.getters.token,
+        },
+      };
+      try {
+        const response = await axios(config);
+        console.log(response);
+        const id = response.data.data.newDoc._id;
+        this.$router.push(`/events/${id}`);
+      } catch (err) {
+        console.log(err);
+      }
     },
   },
 };
@@ -141,20 +175,19 @@ export default {
   background-color: rgb(255, 255, 255);
 }
 
-.labele{
+.labele {
   font-size: 2.5ch;
   color: rgb(46, 46, 46);
   font-weight: 700;
   align-self: baseline;
   margin-bottom: 1%;
 }
-.q-select{
+.q-select {
   padding-top: 5%;
 }
-.q-pa-md{
+.q-pa-md {
   padding: 0 0 7%;
 }
-
 
 .select {
   all: unset;
@@ -216,5 +249,4 @@ textarea {
   background-color: rgb(250, 250, 250);
   border-radius: 0.3em;
 }
-
 </style>
