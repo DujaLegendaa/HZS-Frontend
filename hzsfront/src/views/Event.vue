@@ -1,8 +1,5 @@
 <template>
   <div>
-    <error-alert v-if="errored" :title="errorMessage">
-      <button @click="errored = false">Confirm</button>
-    </error-alert>
     <div id="icons" v-if="creator">
       <q-icon name="qr_code_2" class="icon" @click="generateQR" id="qr_code" />
       <q-icon name="edit" class="icon" @click="editEvent" id="edit" />
@@ -15,9 +12,11 @@
             <!-- dodati font awesome icon  and host name-->
             {{ orgName }}
           </h1>
-        </div>
 
+          
+        </div>
         <p id="city">{{ city }}</p>
+        
       </header>
 
       <!-- Grad akcije-->
@@ -25,6 +24,10 @@
         <h4>Description:</h4>
         <p id="desc">{{ description }}</p>
       </div>
+
+
+      <p id="participants">Broj učesnika:</p>
+      <p id="num-participants"> {{numParticipants}}</p>
 
       <div id="btn" v-if="this.$store.getters.loggedIn">
         <q-btn
@@ -59,11 +62,12 @@ export default {
       errorMessage: "",
       creator: false,
       isParticipatingBool: false,
+      numParticipants: 0
     };
   },
   computed: {
     text() {
-      return this.isParticipatingBool ? "Otkazi" : "Prijavi se";
+      return this.isParticipatingBool ? "Odustani" : "Prijavi se";
     },
   },
   methods: {
@@ -157,6 +161,7 @@ export default {
     axios(config)
       .then(function (response) {
         const ev = response.data.data.doc;
+        that.numParticipants = ev.numParticipants;
         that.orgName = ev.orgName;
         that.description = ev.description;
         that.city = ev.city;
@@ -202,6 +207,17 @@ export default {
   justify-content: center;
 }
 
+#participants{
+  font-size: 2.5ch;
+  font-weight: 600;
+
+}
+
+#num-participants{
+  font-size: 2.3ch;
+  font-weight: 500;
+}
+
 h4 {
   margin: 1% 0 3%;
   font-size: 3ch;
@@ -222,6 +238,9 @@ h4 {
 #desc {
   width: 500px;
   height: 200px;
+  border: 0.2ch solid rgb(155, 155, 155);
+  padding: 1ch 1.5ch;
+  border-radius: 8px;
   overflow-y: auto;
   word-wrap: break-word;
 }
@@ -264,11 +283,20 @@ h1 {
 #edit:hover {
   transition: 0.3s ease;
   cursor: pointer;
-  color: cyan;
+  color: rgb(71, 179, 179);
 }
 #qr_code:hover {
   transition: 0.3s ease;
   cursor: pointer;
   color: black;
+}
+
+#city {
+  font-size: 3ch;
+  padding-top: 1ch;
+  color: #478d5c;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
 }
 </style>
