@@ -1,23 +1,14 @@
 <template>
   <section class="form">
-    <header>
-      <div id="title-icon">
-        <p class="title">
-          <!-- dodati font awesome icon  and host name-->
-          BUDJA BU{{name}} {{surname}}
-        </p>
-        <p id="orgName" v-if="isOrganizer">Ime organizacije: {{ orgName }}</p>
-      </div>
-      
-      <p>12312312{{points}}</p>
-      <p>Grad{{city}}</p>
-    </header>
+    <h1>
+      <!-- dodati font awesome icon  and host name-->
+      {{ name }} {{ surname }}
+    </h1>
+    <p id="email">Email: {{ email }}</p>
+    <p id="orgName" v-if="isOrganizer">Ime organizacije: {{ orgName }}</p>
 
-    <!-- Grad akcije-->
-    <div id="info">
-        <h4>Description:</h4>
-        <p id="description">{{ description }}</p>
-    </div>
+    <p>Poeni: {{ points }}</p>
+    <p>Grad: {{ city }}</p>
   </section>
 </template>
 
@@ -60,13 +51,12 @@ export default {
 };
 </script>
 
-<style>
-h4{
+<style scoped>
+h4 {
   margin: 1% 0 3%;
   font-size: 3ch;
   font-weight: 1000;
 }
-
 
 .form {
   display: grid;
@@ -78,7 +68,7 @@ h4{
   margin: 1% 20%;
 }
 
-#description{
+#description {
   width: 500px;
   height: 200px;
   overflow-y: auto;
@@ -86,20 +76,18 @@ h4{
 }
 
 .btn-grad:hover {
-    background-position: right center; 
-    color: #fff;
-    text-decoration: none;
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
 }
 
-
-header{
+header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
 }
 
-p{
+p {
   height: 100%;
   display: flex;
   align-items: center;
@@ -108,12 +96,11 @@ p{
   color: #3f7c51;
 }
 
-.title{
-  font-size: 5ch;
+h1 {
+  font-size: 4ch;
   font-weight: 1000;
   color: #63c982;
   height: 100%;
   margin: auto;
 }
 </style>
-

@@ -23,12 +23,13 @@
       <!-- Grad akcije-->
       <div id="info">
         <h4>Description:</h4>
-        <p id="description">{{ description }}</p>
+        <p id="desc">{{ description }}</p>
       </div>
 
-      <div id="btn">
+      <div id="btn" v-if="this.$store.getters.loggedIn">
         <q-btn
           type="Submit"
+          @click="participate"
           :class="[{ activeClass: !isActive }]"
           class="btn-grad"
           style="
@@ -38,7 +39,7 @@
             letter-spacing: 0.2ch;
           "
         >
-          Participate
+          {{ text }}
         </q-btn>
       </div>
     </section>
@@ -57,9 +58,50 @@ export default {
       errored: false,
       errorMessage: "",
       creator: false,
+      isParticipatingBool: false,
     };
   },
+  computed: {
+    text() {
+      return this.isParticipatingBool ? "Otkazi" : "Prijavi se";
+    },
+  },
   methods: {
+    async participate() {
+      const route = this.isParticipatingBool ? "/leave" : "/join";
+      var config = {
+        method: "post",
+        url:
+          process.env.VUE_APP_URL + "events/" + this.$route.params.id + route,
+        headers: {
+          Authorization: "Bearer " + this.$store.getters.token,
+        },
+      };
+      try {
+        const response = await axios(config);
+        window.location.reload();
+      } catch (err) {
+        this.errored = true;
+        this.errorMessage = err.response.data.message;
+      }
+    },
+    async isParticipating() {
+      var config = {
+        method: "get",
+        url:
+          process.env.VUE_APP_URL + "events/" + this.$route.params.id + "/join",
+        headers: {
+          Authorization: "Bearer " + this.$store.getters.token,
+        },
+      };
+      try {
+        const response = await axios(config);
+        this.isParticipatingBool = response.data.data.isParticipating;
+      } catch (err) {
+        this.errored = true;
+        this.errorMessage = err.response.data.message;
+      }
+    },
     async isCreator() {
       if (!this.$store.getters.loggedIn) return false;
       var config = {
@@ -81,6 +123,7 @@ export default {
         this.errorMessage = err.response.data.message;
       }
     },
+    async doesParticipate() {},
     async deleteEvent() {
       var config = {
         method: "delete",
@@ -118,7 +161,9 @@ export default {
         that.description = ev.description;
         that.city = ev.city;
         that.isCreator().then(function () {
-          that.loaded = true;
+          that.isParticipating().then(function () {
+            that.loaded = true;
+          });
         });
       })
       .catch(function (error) {
@@ -173,9 +218,7 @@ h4 {
   margin: 5% 20% 1% 20%;
 }
 
-#description {
-  text-align: top;
-  display: flex;
+#desc {
   width: 500px;
   height: 200px;
   overflow-y: auto;
@@ -194,16 +237,6 @@ header {
   justify-content: space-between;
 }
 
-#city{
-  font-size: 2.7ch;
-  margin-right: 2ch;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  font-size: 3ch;
-  font-weight: 700;
-  color: #3f7c51;
-}
 h1 {
   font-size: 4.5ch;
   font-weight: 1000;
