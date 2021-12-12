@@ -1,6 +1,6 @@
 <template>
   <section id="createevent">
-    <h1>Create event</h1>
+    <h1>Kreiraj dogadjaj</h1>
     <q-form class="form" @submit.prevent='submit()'>
       <q-select
           outlined
@@ -9,8 +9,9 @@
           :options="selectOptions"
           label="Grad"
         />
-
+      
       <div class="q-pa-md" style="max-width: 300px">
+        <div class="labele">Datum</div>
         <q-input class="input" filled v-model="eventDay" mask="date" :rules="['date']">
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer">
@@ -30,20 +31,17 @@
           </template>
         </q-input>
       </div>
-      <q-input
-        type="text"
-        name="description"
-        class="description"
-        style="width: 500px;
-              height: 200px;
-              overflow-y: auto;
-              word-wrap: break-word; "
-        v-model="description"
-        required
-        placeholder="Unesite opis dogadjaja. "
-      />
-      <p v-if="isActive" style="color: red">
-        Sva polja trebaju biti ispravno popunjena.
+      <div class="labele">Opis dogadjaja</div>
+      <textarea
+          placeholder="Unesite opis dogadjaja"
+          name="description"
+          id="description"
+          cols="30"
+          rows="10"
+          v-model="description"
+        ></textarea>
+      <p v-if="isActive" class="warnings" style="color: red">
+        Sva polja moraju biti ispravno popunjena.
       </p>
       <q-btn
         class="btn-grad"
@@ -51,7 +49,7 @@
         :disabled="isActive"
         :class="[{ activeClass: !isActive }]"
       >
-        Submit
+        Kreiraj
       </q-btn>
     </q-form>
   </section>
@@ -143,6 +141,13 @@ export default {
   background-color: rgb(255, 255, 255);
 }
 
+.labele{
+  font-size: 2.5ch;
+  color: rgb(46, 46, 46);
+  font-weight: 700;
+  align-self: baseline;
+  margin-bottom: 1%;
+}
 .q-select{
   padding-top: 5%;
 }
@@ -154,13 +159,13 @@ export default {
 .select {
   all: unset;
   margin-top: 0;
-  width: 200px;
+  width: 300px;
   height: 100px;
 }
 
-p {
+.warnings {
   color: rgb(204, 50, 50);
-  font-size: 1.5ch;
+  font-size: 1.9ch;
   font-weight: 750;
 }
 label {
@@ -204,5 +209,12 @@ h1 {
   color: #63d062;
 }
 
+textarea {
+  margin-bottom: 2em;
+  padding: 0.5em;
+  height: 10em;
+  background-color: rgb(250, 250, 250);
+  border-radius: 0.3em;
+}
 
 </style>

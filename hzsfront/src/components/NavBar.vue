@@ -2,28 +2,28 @@
   <nav>
     <div id="left">
       <section id="alwaysOn">
-        <router-link class="routerlink" to="/">Home</router-link>
-        <router-link class="routerlink" to="/events">Events</router-link>
+        <router-link class="routerlink" to="/">Glavna strana</router-link>
+        <router-link class="routerlink" to="/events">Dogadjaji</router-link>
       </section>
     </div>
 
     <div id="right">
       <section v-if="!this.loggedIn()" id="notLoggedIn">
-        <router-link class="routerlink" to="/login">Log in</router-link>
+        <router-link class="routerlink" to="/login">Prijavite se</router-link>
 
-        <router-link class="routerlink" id="signup" to="/signup">Sign up</router-link>
+        <router-link class="routerlink" id="signup" to="/signup">Registrujte se</router-link>
       </section>
 
       <section v-if="this.isOrganizator()" id="isOrganizator">
         <router-link class="routerlink" to="/createEvent"
-          >Create Event</router-link
+          >Kreiraj dogadjaj</router-link
         >
       </section>
 
       <section v-if="this.loggedIn()" id="loggedIn">
-        <router-link class="routerlink" to="/profile">Profile</router-link>
+        <router-link class="routerlink" to="/profile">Profil</router-link>
         <router-link class="routerlink" @click="onClick()" to="/"
-          >Log out</router-link
+          >Odjavite se</router-link
         >
       </section>
     </div>
