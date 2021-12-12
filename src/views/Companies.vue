@@ -84,6 +84,7 @@ h3 {
 #d {
   display: flex;
   justify-content: space-between;
+  margin-top: 5%;
 }
 
 #leaf {
