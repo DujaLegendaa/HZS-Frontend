@@ -210,6 +210,7 @@ h4 {
 
 .form {
   display: grid;
+  background-color: white;
   grid-column: 3fr;
   grid-column-gap: 0.3em;
   padding: 1% 3%;
