@@ -17,7 +17,7 @@
           </h1>
         </div>
 
-        <p>{{ city }}</p>
+        <p id="city">{{ city }}</p>
       </header>
 
       <!-- Grad akcije-->
@@ -215,7 +215,7 @@ h4 {
   padding: 1% 3%;
   border: 0.2ch solid rgb(155, 155, 155);
   border-radius: 8px;
-  margin: 0% 20% 1% 20%;
+  margin: 1% 20% 1% 20%;
 }
 
 #desc {
@@ -238,7 +238,7 @@ header {
 }
 
 h1 {
-  font-size: 4ch;
+  font-size: 4.5ch;
   font-weight: 1000;
   color: #63c982;
   height: 100%;
@@ -247,7 +247,7 @@ h1 {
 #icons {
   display: flex;
   justify-content: flex-end;
-  margin: 0% 20%;
+  margin: 1% 20% 0;
 }
 #icons .icon {
   margin: 0.1ch 0.2ch;

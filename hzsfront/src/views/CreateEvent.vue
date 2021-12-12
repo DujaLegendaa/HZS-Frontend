@@ -1,10 +1,24 @@
 <template>
-  <section>
-    <q-form @submit.prevent="submit()">
-      <q-select v-model="city" :options="selectOptions" label="Grad" />
+  <section id="createevent">
+    <h1>Kreiraj dogadjaj</h1>
+    <q-form class="form" @submit.prevent="submit()">
+      <q-select
+        outlined
+        class="select"
+        v-model="city"
+        :options="selectOptions"
+        label="Grad"
+      />
 
       <div class="q-pa-md" style="max-width: 300px">
-        <q-input filled v-model="eventDay" mask="date" :rules="['date']">
+        <div class="labele">Datum</div>
+        <q-input
+          class="input"
+          filled
+          v-model="eventDay"
+          mask="date"
+          :rules="['date']"
+        >
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer">
               <q-popup-proxy
@@ -23,30 +37,25 @@
           </template>
         </q-input>
       </div>
-      <q-input
-        type="text"
+      <div class="labele">Opis dogadjaja</div>
+      <textarea
+        placeholder="Unesite opis dogadjaja"
         name="description"
         id="description"
+        cols="30"
+        rows="10"
         v-model="description"
-        required
-        placeholder="Unesite opis dogadjaja. "
-      />
-      <q-input
-        type="number"
-        name="pointsPerParticipant"
-        id="pointsPerParticipant"
-        v-model="pointsPerParticipant"
-        placeholder="Unesite poene po ucesniku"
-      />
-      <p v-if="isActive" style="color: red">
-        Sva polja trebaju biti ispravno popunjena.
+      ></textarea>
+      <p v-if="isActive" class="warnings" style="color: red">
+        Sva polja moraju biti ispravno popunjena.
       </p>
       <q-btn
+        class="btn-grad"
         type="Submit"
         :disabled="isActive"
         :class="[{ activeClass: !isActive }]"
       >
-        Submit
+        Kreiraj
       </q-btn>
     </q-form>
   </section>
@@ -146,4 +155,97 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+#createevent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.form {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border: 2px solid gray;
+  padding: 2em;
+  border-radius: 0.7em;
+  background-color: rgb(255, 255, 255);
+}
+
+.labele {
+  font-size: 2.5ch;
+  color: rgb(46, 46, 46);
+  font-weight: 700;
+  align-self: baseline;
+  margin-bottom: 1%;
+}
+.q-select {
+  padding-top: 5%;
+}
+.q-pa-md {
+  padding: 0 0 7%;
+}
+
+.select {
+  all: unset;
+  margin-top: 0;
+  width: 300px;
+  height: 100px;
+}
+
+.warnings {
+  color: rgb(204, 50, 50);
+  font-size: 1.9ch;
+  font-weight: 750;
+}
+label {
+  font-size: 2ch;
+  color: rgb(46, 46, 46);
+  font-weight: 700;
+  align-self: baseline;
+}
+.btn-grad {
+  background-image: linear-gradient(
+    to right,
+    #63c968 0%,
+    #6bd1c7 51%,
+    #63c968 100%
+  );
+}
+.btn-grad {
+  margin: 10px;
+  align-self: center;
+  width: 275px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 5px;
+}
+
+.btn-grad:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 1ch 0 0.1ch;
+  align-self: center;
+  font-size: 8ch;
+  font-weight: 700;
+  color: #63d062;
+}
+
+textarea {
+  margin-bottom: 2em;
+  padding: 0.5em;
+  height: 10em;
+  background-color: rgb(250, 250, 250);
+  border-radius: 0.3em;
+}
+</style>
