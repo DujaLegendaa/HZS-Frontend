@@ -1,7 +1,7 @@
 <template>
   <div id="base">
-    <p>For: {{ forUser }}</p>
-    <p>Points: {{ points }}</p>
+    <p>Za: {{ forUser }}</p>
+    <p>Poeni: {{ points }}</p>
     <img :src="url" />
   </div>
 </template>
@@ -25,20 +25,38 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      forUser: "",
+    };
   },
   computed: {
     url() {
-      console.log(this);
-      console.log(
-        "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
-          this.id
-      );
+      var baseurl = window.location.origin;
       return (
         "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
-        this.id
+        baseurl +
+        "/codes/" +
+        this.id +
+        "/activate"
       );
     },
+  },
+  mounted() {
+    let that = this;
+    var config = {
+      method: "get",
+      url: process.env.VUE_APP_URL + "codes/" + this.id + "/forUser",
+      headers: {
+        Authorization: "Bearer " + this.$store.getters.token,
+      },
+    };
+    axios(config)
+      .then(function (response) {
+        that.forUser = response.data.data.doc._forUser.email;
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
   },
 };
 </script>
@@ -48,5 +66,9 @@ export default {
   display: flex;
   flex-direction: column;
   border: 1px solid gray;
+}
+img {
+  height: 300px;
+  width: 300px;
 }
 </style>
