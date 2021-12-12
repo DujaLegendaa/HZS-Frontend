@@ -46,6 +46,7 @@
         rows="10"
         v-model="description"
       ></textarea>
+      <q-input v-model="pointsPerParticipant" class="input"></q-input>
       <p v-if="isActive" class="warnings" style="color: red">
         Sva polja moraju biti ispravno popunjena.
       </p>
